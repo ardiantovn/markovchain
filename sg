@@ -1,0 +1,20 @@
+digraph {
+	rankdir=LR size="8,5"
+	node [shape=circle]
+	NYC
+	NYC -> NYC [label=0.25]
+	Cairo
+	Cairo -> NYC [label=0.75]
+	Seoul
+	Seoul -> NYC [label=1.0]
+	Paris
+	NYC -> Paris [label=0.25]
+	Paris -> Paris [label=0.25]
+	Cairo
+	NYC -> Cairo [label=0.25]
+	Paris -> Cairo [label=0.25]
+	Cairo -> Cairo [label=0.25]
+	Seoul
+	NYC -> Seoul [label=0.25]
+	Paris -> Seoul [label=0.5]
+}
