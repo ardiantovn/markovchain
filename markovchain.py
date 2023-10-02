@@ -8,10 +8,9 @@ from graphviz import Digraph
 from IPython.display import Image as ImageDisplay
 from PIL import ImageDraw
 from PIL import Image
-
 from typing import List, Any
 
-class MarkovChain:class MarkovChain:
+class MarkovChain:
     """
     Represents a Markov chain and provides methods for working with Markov chains.
 
