@@ -5,7 +5,7 @@ digraph {
 	NYC -> NYC [label=0.25]
 	Cairo
 	Cairo -> NYC [label=0.75]
-	Seoul
+	Seoul [fillcolor="#40e0d0" style=filled]
 	Seoul -> NYC [label=1.0]
 	Paris
 	NYC -> Paris [label=0.25]
@@ -14,7 +14,7 @@ digraph {
 	NYC -> Cairo [label=0.25]
 	Paris -> Cairo [label=0.25]
 	Cairo -> Cairo [label=0.25]
-	Seoul
+	Seoul [fillcolor="#40e0d0" style=filled]
 	NYC -> Seoul [label=0.25]
 	Paris -> Seoul [label=0.5]
 }
