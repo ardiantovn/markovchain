@@ -3,9 +3,9 @@ digraph {
 	node [shape=circle]
 	Ttukseom
 	Ttukseom -> Ttukseom [label=0.31]
-	Gunja
+	Gunja [fillcolor="#40e0d0" style=filled]
 	Gunja -> Ttukseom [label=0.19]
-	Wangsimni [fillcolor="#40e0d0" style=filled]
+	Wangsimni
 	Wangsimni -> Ttukseom [label=0.45]
 	Dapsimni
 	Dapsimni -> Ttukseom [label=0.31]

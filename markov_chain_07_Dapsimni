@@ -5,9 +5,9 @@ digraph {
 	Ttukseom -> Ttukseom [label=0.31]
 	Gunja
 	Gunja -> Ttukseom [label=0.19]
-	Wangsimni [fillcolor="#40e0d0" style=filled]
+	Wangsimni
 	Wangsimni -> Ttukseom [label=0.45]
-	Dapsimni
+	Dapsimni [fillcolor="#40e0d0" style=filled]
 	Dapsimni -> Ttukseom [label=0.31]
 	Ttukseom -> Gunja [label=0.18]
 	Gunja -> Gunja [label=0.51]
