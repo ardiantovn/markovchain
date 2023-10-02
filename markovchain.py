@@ -231,28 +231,34 @@ class MarkovChain:
             os.remove(os.path.join(mydir, f))
 
     def travel_simulation(self,
-                          df: pd.DataFrame,
                           init_region: str,
-                          dest_region: str) -> List[str]:
+                          dest_region: str,
+                          plot_mode: str='base') -> List[str]:
         """
         Simulates a travel itinerary based on a given DataFrame of regions and their probabilities of transition.
 
         Parameters:
-            df (pd.DataFrame): The DataFrame containing the transition probabilities between regions.
+            plot_mode (str, optional): The plot mode. Defaults to 'base'.
+                                       Options: ['base', 'blocked']
             init_region (str): The initial region to start the travel simulation from.
             dest_region (str): The destination region to reach in the travel simulation.
 
         Returns:
             List[str]: A list of regions representing the simulated travel itinerary.
         """
+        if plot_mode == 'base':
+            selected_df = self.base_df
+        elif plot_mode == 'blocked':
+            selected_df = self.blocked_df
+            
         self.travel_simulated = []
 
         region = init_region
         self.travel_simulated.append(region)
 
         while region != dest_region:
-            region = np.random.choice(df.iloc[df.index.get_loc(region)].index,
-                                    p=df.iloc[df.index.get_loc(region)])
+            region = np.random.choice(selected_df.iloc[selected_df.index.get_loc(region)].index,
+                                    p=selected_df.iloc[selected_df.index.get_loc(region)])
             self.travel_simulated.append(region)
         return self.travel_simulated
 

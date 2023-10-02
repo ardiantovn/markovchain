@@ -6,6 +6,6 @@ digraph {
 	Gunja -> Ttukseom [label=1.0]
 	Wangsimni
 	Wangsimni -> Ttukseom [label=1.0]
-	Ttukseom -> Gunja [label=0.26]
-	Ttukseom -> Wangsimni [label=0.74]
+	Ttukseom -> Gunja [label=0.51]
+	Ttukseom -> Wangsimni [label=0.49]
 }
