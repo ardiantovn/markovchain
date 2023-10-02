@@ -3,18 +3,28 @@ digraph {
 	node [shape=circle]
 	NYC
 	NYC -> NYC [label=0.25]
+	Paris [fillcolor="#40e0d0" style=filled]
+	Paris -> NYC [label=0.25]
 	Cairo
-	Cairo -> NYC [label=0.75]
+	Cairo -> NYC [label=0.25]
 	Seoul
-	Seoul -> NYC [label=1.0]
+	Seoul -> NYC [label=0.25]
 	Paris [fillcolor="#40e0d0" style=filled]
 	NYC -> Paris [label=0.25]
 	Paris -> Paris [label=0.25]
+	Cairo
+	Cairo -> Paris [label=0.25]
+	Seoul
+	Seoul -> Paris [label=0.25]
 	Cairo
 	NYC -> Cairo [label=0.25]
 	Paris -> Cairo [label=0.25]
 	Cairo -> Cairo [label=0.25]
 	Seoul
+	Seoul -> Cairo [label=0.25]
+	Seoul
 	NYC -> Seoul [label=0.25]
-	Paris -> Seoul [label=0.5]
+	Paris -> Seoul [label=0.25]
+	Cairo -> Seoul [label=0.25]
+	Seoul -> Seoul [label=0.25]
 }
