@@ -11,11 +11,45 @@ from PIL import Image
 
 from typing import List, Any
 
-class MarkovChain:
-    
+class MarkovChain:class MarkovChain:
+    """
+    Represents a Markov chain and provides methods for working with Markov chains.
+
+    Attributes:
+        region_list (list): A list of strings representing the regions in the Markov chain.
+        remove_self_flight (bool): A flag indicating whether to remove self-flights in the Markov chain.
+
+    Methods:
+        baseline_data(): Generates a baseline dataframe based on the region list.
+        clear_all_generated_files(): Clears all generated files in the current directory.
+        prob_ending_region_after_n_step(matrix, 
+                                        initial_region,
+                                        final_region,
+                                        n_steps): Calculates the probability of ending in a 
+                                                  specific region after taking a certain 
+                                                  number of steps in a matrix.
+        plot_base(): Generates the base plot for visualization.
+        block_nodes(matrix,
+                    node_1=None,
+                    node_2=None): Generates an adjacency matrix based 
+                                  on a given DataFrame, with the option to block nodes.
+        plot_travel_simulation(plot_mode='base'): Plots the travel simulation.
+        preprocess_data(matrix): Preprocesses a given adjacency matrix DataFrame to be an edge-list DataFrame.
+        matrix_power(matrix, power): Calculates the power of a matrix.
+    """
     def __init__(self,
                  region_list: List[str],
                  remove_self_flight: bool=False) -> None:
+        """
+        Initializes a new instance of the class.
+
+        Parameters:
+            region_list (List[str]): A list of regions.
+            remove_self_flight (bool, optional): Indicates whether to remove self flights. Defaults to False.
+
+        Returns:
+            None
+        """
         self.remove_self_flight = remove_self_flight
         self.region_list = region_list
         return None
