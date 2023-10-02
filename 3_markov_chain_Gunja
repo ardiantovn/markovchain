@@ -1,0 +1,22 @@
+digraph {
+	rankdir=LR size="8,5"
+	node [shape=circle]
+	Ttukseom
+	Ttukseom -> Ttukseom [label=0.25]
+	Gunja [fillcolor="#40e0d0" style=filled]
+	Gunja -> Ttukseom [label=0.25]
+	Wangsimni
+	Wangsimni -> Ttukseom [label=0.33]
+	Dapsimni
+	Dapsimni -> Ttukseom [label=0.33]
+	Ttukseom -> Gunja [label=0.25]
+	Gunja -> Gunja [label=0.25]
+	Wangsimni -> Gunja [label=0.33]
+	Dapsimni -> Gunja [label=0.33]
+	Ttukseom -> Wangsimni [label=0.25]
+	Gunja -> Wangsimni [label=0.25]
+	Wangsimni -> Wangsimni [label=0.33]
+	Ttukseom -> Dapsimni [label=0.25]
+	Gunja -> Dapsimni [label=0.25]
+	Dapsimni -> Dapsimni [label=0.33]
+}
