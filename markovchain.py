@@ -302,6 +302,17 @@ class MarkovChain:
         return prob_ending_in_final_region_after_n_step 
     
     def plot_base(self):
+        """
+        Generate the base plot for visualization.
+
+        Clears all previously generated files.
+
+        Parameters:
+            None
+
+        Returns:
+            The generated base plot image.
+        """
         # clear previous  all generated files
         self.clear_all_generated_files()
 
@@ -318,7 +329,19 @@ class MarkovChain:
                                                   colored=None)
         return self.base_img
 
-    def plot_blocked_node(self, node_1: str, node_2: str):
+    def plot_blocked_node(self,
+                          node_1: str,
+                          node_2: str):
+        """
+        Plot the blocked node between two given nodes.
+
+        Parameters:
+            node_1 (str): The first node.
+            node_2 (str): The second node.
+
+        Returns:
+            blocked_img: The graph network image after blocking the nodes.
+        """
         # block nodes
         self.blocked_df = self.block_nodes(self.base_df, 
                                             node_1, 
@@ -335,12 +358,27 @@ class MarkovChain:
                                                 colored=None)
         return self.blocked_img
     
-    def plot_travel_simulation(self, selected_df: pd.DataFrame):
+    def plot_travel_simulation(self,
+                               plot_mode: str = 'base'):
+        """
+        Plot the travel simulation.
+
+        Parameters:
+            plot_mode (str, optional): The plot mode. Defaults to 'base'.
+                                       Options: ['base', 'blocked']
+
+        Returns:
+            str: The path to the generated travel image.
+        """
         # clear previous  all generated files
         self.clear_all_generated_files()
 
         # render graph network
         colored_list = self.travel_simulated
+        if plot_mode == 'base':
+            selected_df = self.base_df
+        elif plot_mode == 'blocked':
+            selected_df = self.blocked_df
         prep_selected_df = self.preprocess_data(selected_df)
         for i in range(len(colored_list)):
             self.create_graph_network(prep_selected_df, colored_list[i], index=str(i))
