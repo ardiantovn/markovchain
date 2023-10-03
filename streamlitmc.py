@@ -5,10 +5,6 @@ from markovchain import MarkovChain
 class StreamlitMC:
     def add_region_list(self):
         
-        '''
-        ## Add Region List
-        '''
-        
         instr = 'Enter  regions (comma separated)'
 
         with st.form('chat_input_form'):
@@ -46,6 +42,9 @@ if __name__ == "__main__":
     A UAV has been programmed to move between several region. 
     This simulator will generate possible routes for the UAV based on the inputted region list.
     The UAV movement is determined by the Markov Chain using random transition matrix.
+    
+    ## Add Region List
+    Example: Ttukseom, Gunja, Wangsimni, Dapsimni
     '''
     
     obj = StreamlitMC()
@@ -94,7 +93,7 @@ if __name__ == "__main__":
                 with block2:
                     st.image(blocked_img)
                 
-                simulate = st.button('Simulate')
+                simulate = simcol.button('SIMULATE')
                 
                 if simulate:
                     plot_mode='blocked'
