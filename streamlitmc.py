@@ -34,34 +34,28 @@ class StreamlitMC:
 
 
     def button_remove_self_flight(self):
-        # Create a sidebar
-        st.sidebar.title("Options")
-        
         # Initialize the "Remove Self Flight" option
         self.remove_self_flight = False
 
         # Display a power button to toggle the "Remove Self Flight" option
-        self.remove_self_flight = st.sidebar.toggle("Remove Self Flight", self.remove_self_flight)
-        
-        # Display the current status of the "Remove Self Flight" option
-        st.sidebar.write("Remove Self Flight:", "ON" if self.remove_self_flight else "OFF")
-        
+        self.remove_self_flight = st.sidebar.toggle("Remove Self Flight[Optional]", self.remove_self_flight)
 
 if __name__ == "__main__":
     '''
     # UAV Markov Chain Simulator
+    A UAV has been programmed to move between several region. 
+    This simulator will generate possible routes for the UAV based on the inputted region list.
+    The UAV movement is determined by the Markov Chain using random transition matrix.
     '''
     
     obj = StreamlitMC()
     obj.add_region_list()
-    obj.button_remove_self_flight()
     
     if len(obj.region_list)>1:
-        st.session_state
-        
         st.sidebar.title("Plot Basic Transision Matrix")
         plot_base = False
         plot_base = st.sidebar.toggle("Plot Basic", plot_base)
+        obj.button_remove_self_flight()
         
         if plot_base:
             mc = MarkovChain(obj.region_list,
@@ -88,7 +82,9 @@ if __name__ == "__main__":
             plot_blocked = st.sidebar.toggle("Plot Route", plot_blocked)
             
             if plot_blocked:
-                st.title('UAV Flight Transision Matrix and its Graph Network')
+                '''
+                ## UAV Flight Transision Matrix and its Graph Network
+                '''
                 blocked_img = mc.plot_blocked_node(node_1=start,
                                                                        node_2=end)
                 
@@ -107,7 +103,7 @@ if __name__ == "__main__":
                                                             plot_mode
                                                             )
                     f'''
-                    # SIMULATION RESULTS
+                    ## SIMULATION RESULTS
                     - N-STEP : {len(travel_simulated)-1}
                     - POSSIBLE ROUTE: {travel_simulated}
                     '''
