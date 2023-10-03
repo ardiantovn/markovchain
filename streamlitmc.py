@@ -93,7 +93,7 @@ if __name__ == "__main__":
                 with block2:
                     st.image(blocked_img)
                 
-                simulate = simcol.button('SIMULATE')
+                simulate = st.button('SIMULATE')
                 
                 if simulate:
                     plot_mode='blocked'
