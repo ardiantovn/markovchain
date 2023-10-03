@@ -49,6 +49,12 @@ if __name__ == "__main__":
     
     obj = StreamlitMC()
     obj.add_region_list()
+    region_updated = False
+    if 'region_list' not in st.session_state:
+        st.session_state.region_list = obj.region_list
+    elif obj.region_list != st.session_state.region_list:
+        st.session_state.region_list = obj.region_list
+        region_updated = True
     
     if len(obj.region_list)>1:
         st.sidebar.title("Plot Basic Transision Matrix")
@@ -65,10 +71,12 @@ if __name__ == "__main__":
             remove_updated = True
             
         if plot_base:
-            mc = MarkovChain(obj.region_list,
+            mc = MarkovChain(st.session_state.region_list,
                              st.session_state.remove_self_flight)
             
-            if 'mc' not in st.session_state or remove_updated==True:
+            if 'mc' not in st.session_state\
+                or remove_updated\
+                or region_updated:
                 st.session_state.mc = mc
                 st.session_state.mc.plot_base()
                 
@@ -92,6 +100,20 @@ if __name__ == "__main__":
             start = st.sidebar.selectbox('Departure Region', obj.region_list)
             end = st.sidebar.selectbox('Arrival Region', obj.region_list)
             
+            node_1_updated = False
+            if 'start' not in st.session_state:
+                st.session_state.start = start
+            elif start != st.session_state.start:
+                st.session_state.start = start
+                node_1_updated = True
+                
+            node_2_updated = False
+            if 'end' not in st.session_state:
+                st.session_state.end = end
+            elif end != st.session_state.end:
+                st.session_state.end = end
+                node_2_updated = True
+            
             plot_blocked = False
             plot_blocked = st.sidebar.toggle("Plot Route", plot_blocked)
             
@@ -99,10 +121,14 @@ if __name__ == "__main__":
                 '''
                 ## UAV Flight Transision Matrix and its Graph Network
                 '''
-                if 'blocked' not in st.session_state:
+                if 'blocked' not in st.session_state \
+                    or remove_updated \
+                    or region_updated \
+                    or node_1_updated \
+                    or node_2_updated:
                     st.session_state.blocked = True
-                    st.session_state.mc.plot_blocked_node(node_1=start,
-                                                                    node_2=end)
+                    st.session_state.mc.plot_blocked_node(node_1=st.session_state.start,
+                                                          node_2=st.session_state.end)
                     
                     st.session_state.blocked_img = st.session_state.mc.blocked_img
                     st.session_state.blocked_df = st.session_state.mc.blocked_df
