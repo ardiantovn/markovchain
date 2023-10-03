@@ -44,7 +44,7 @@ if __name__ == "__main__":
     The UAV movement is determined by the Markov Chain using random transition matrix.
     
     ## Add Region List
-    Example: Ttukseom, Gunja, Wangsimni, Dapsimni
+    Example: Gunja, Wangsimni, Dapsimni
     '''
     
     obj = StreamlitMC()
