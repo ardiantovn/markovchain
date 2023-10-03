@@ -51,7 +51,6 @@ if __name__ == "__main__":
     obj.add_region_list()
     
     if len(obj.region_list)>1:
-        st.session_state
         st.sidebar.title("Plot Basic Transision Matrix")
         plot_base = False
         plot_base = st.sidebar.toggle("Plot Basic", plot_base)
