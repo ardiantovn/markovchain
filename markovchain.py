@@ -170,6 +170,7 @@ class MarkovChain:
     def create_graph_network(self,
                              df: pd.DataFrame,
                              colored: str,
+                             prefix: str = '',
                              index: str = '') -> str:
         """
         Generates a graph network based on the given DataFrame.
@@ -211,13 +212,14 @@ class MarkovChain:
         if index != '':
             if int(index) < 10:
                 index = f'0{index}'
-        fname = f'./markov_chain_{index}_{colored}'
+        fname = f'./markov_chain_{prefix}_{index}_{colored}'
         G.render(fname, view=False)
         save_as = f'{fname}.jpeg'
         return save_as
 
     def generate_gif(self,
                      jpeg_dir: str = './',
+                     file_prefix: str = 'markov_chain',
                      save_as: str = './markov_chain.gif',
                      duration: int = 1000) -> str:
         """
@@ -241,25 +243,27 @@ class MarkovChain:
         """
         images: List[Image.Image] = []
         for file_name in sorted(os.listdir(jpeg_dir)):
-            if file_name.endswith('.jpeg') and not file_name.endswith('_None.jpeg'):
-                file_path = os.path.join(jpeg_dir, file_name)
-                
-                # add step info
-                img = Image.open(file_path)
-                img_draw = ImageDraw.Draw(img)
-                img_draw.text((10, 10), 'STEP: ' + file_path.split('markov_chain_')[1][:2], fill='black')
-                img.save(file_path)
-                
-                images.append(imageio.imread(file_path))
+            if file_name.startswith(file_prefix):
+                if file_name.endswith('.jpeg') and not file_name.endswith('_None.jpeg'):
+                    file_path = os.path.join(jpeg_dir, file_name)
+                    
+                    # add step info
+                    img = Image.open(file_path)
+                    img_draw = ImageDraw.Draw(img)
+                    img_draw.text((10, 10), 'STEP: ' + file_name.split(f'{file_prefix}')[1][:2], fill='black')
+                    img.save(file_path)
+                    
+                    images.append(imageio.imread(file_path))
         imageio.mimsave(save_as, images, 'GIF', duration=duration)
         return save_as
 
-    def clear_all_generated_files(self) -> None:
+    def clear_all_generated_files(self,
+                                  file_prefix: str = 'markov_chain') -> None:
         """
         Clears all generated files in the current directory.
         """
         mydir: str = './'
-        filelist: List[str] = [f for f in os.listdir(mydir) if f.startswith("markov_chain")]
+        filelist: List[str] = [f for f in os.listdir(mydir) if f.startswith(file_prefix)]
         for f in filelist:
             os.remove(os.path.join(mydir, f))
 
@@ -353,7 +357,7 @@ class MarkovChain:
             The generated base plot image.
         """
         # clear previous  all generated files
-        self.clear_all_generated_files()
+        self.clear_all_generated_files(file_prefix='markov_chain_base')
 
         # declare matrix
         self.base_df = self.baseline_data(self.region_list,
@@ -365,7 +369,8 @@ class MarkovChain:
         
         # render graph network
         self.base_img = self.create_graph_network(self.prep_base_df,
-                                                  colored=None)
+                                                  colored=None,
+                                                  prefix='base')
         return self.base_img
 
     def plot_blocked_node(self,
@@ -394,7 +399,7 @@ class MarkovChain:
 
         # render graph network
         self.blocked_img = self.create_graph_network(self.prep_blocked_df, 
-                                                colored=None)
+                                                     colored=None)
         return self.blocked_img
     
     def plot_travel_simulation(self,
@@ -410,7 +415,7 @@ class MarkovChain:
             str: The path to the generated travel image.
         """
         # clear previous  all generated files
-        self.clear_all_generated_files()
+        self.clear_all_generated_files(file_prefix='markov_chain_blocked')
 
         # render graph network
         colored_list = self.travel_simulated
@@ -418,10 +423,13 @@ class MarkovChain:
             selected_df = self.base_df
         elif plot_mode == 'blocked':
             selected_df = self.blocked_df
+            
         prep_selected_df = self.preprocess_data(selected_df)
+        
         for i in range(len(colored_list)):
-            self.create_graph_network(prep_selected_df, colored_list[i], index=str(i))
-
+            self.create_graph_network(prep_selected_df, colored_list[i], plot_mode, index=str(i))
+        
         # generate gif
-        travel_img = self.generate_gif(save_as= './markov_chain_travel_sim.gif')
+        travel_img = self.generate_gif(file_prefix=f'markov_chain_{plot_mode}_', 
+                                       save_as= './markov_chain_blocked_travel_sim.gif')
         return travel_img

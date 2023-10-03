@@ -1,0 +1,11 @@
+digraph {
+	rankdir=LR size="8,5"
+	node [shape=circle]
+	" c"
+	a [fillcolor="#40e0d0" style=filled]
+	" c" -> a [label=0.22]
+	" b"
+	" c" -> " b" [label=0.78]
+	a -> " c" [label=1.0]
+	" b" -> " c" [label=1.0]
+}

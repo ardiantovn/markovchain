@@ -51,25 +51,41 @@ if __name__ == "__main__":
     obj.add_region_list()
     
     if len(obj.region_list)>1:
+        st.session_state
         st.sidebar.title("Plot Basic Transision Matrix")
         plot_base = False
         plot_base = st.sidebar.toggle("Plot Basic", plot_base)
+        
         obj.button_remove_self_flight()
         
+        remove_updated = False
+        if 'remove_self_flight' not in st.session_state:
+            st.session_state.remove_self_flight = obj.remove_self_flight
+        elif obj.remove_self_flight != st.session_state.remove_self_flight:
+            st.session_state.remove_self_flight = obj.remove_self_flight
+            remove_updated = True
+            
         if plot_base:
             mc = MarkovChain(obj.region_list,
-                             obj.remove_self_flight)
+                             st.session_state.remove_self_flight)
             
-            base_img = mc.plot_base()
+            if 'mc' not in st.session_state or remove_updated==True:
+                st.session_state.mc = mc
+                st.session_state.mc.plot_base()
+                
+                st.session_state.base_img = st.session_state.mc.base_img
+                st.session_state.base_df = st.session_state.mc.base_df
+            
+            # base_img = mc.plot_base()
             
             '''
             ## Basic Transision Matrix and its Graph Network
             '''
             base1, base2 = st.columns(2)
             with base1:
-                st.dataframe(mc.base_df)
+                st.dataframe(st.session_state.mc.base_df)
             with base2:
-                st.image(base_img)
+                st.image(st.session_state.mc.base_img)
 
             st.sidebar.title('UAV Flight Simulation')
             st.sidebar.text('Choose Departure and Arrival Region.')
@@ -84,30 +100,35 @@ if __name__ == "__main__":
                 '''
                 ## UAV Flight Transision Matrix and its Graph Network
                 '''
-                blocked_img = mc.plot_blocked_node(node_1=start,
-                                                                       node_2=end)
+                if 'blocked' not in st.session_state:
+                    st.session_state.blocked = True
+                    st.session_state.mc.plot_blocked_node(node_1=start,
+                                                                    node_2=end)
+                    
+                    st.session_state.blocked_img = st.session_state.mc.blocked_img
+                    st.session_state.blocked_df = st.session_state.mc.blocked_df
                 
                 block1, block2 = st.columns(2)
                 with block1:
-                    st.dataframe(mc.blocked_df)
+                    st.dataframe(st.session_state.mc.blocked_df)
                 with block2:
-                    st.image(blocked_img)
+                    st.image(st.session_state.mc.blocked_img)
                 
                 simulate = st.button('SIMULATE')
                 
                 if simulate:
                     plot_mode='blocked'
-                    travel_simulated = mc.travel_simulation(start,
-                                                            end,
-                                                            plot_mode
-                                                            )
+                    travel_simulated = st.session_state.mc.travel_simulation(start,
+                                                                            end,
+                                                                            plot_mode
+                                                                            )
                     f'''
                     ## SIMULATION RESULTS
                     - N-STEP : {len(travel_simulated)-1}
                     - POSSIBLE ROUTE: {travel_simulated}
                     '''
                     
-                    travel_img = mc.plot_travel_simulation(plot_mode)
+                    travel_img = st.session_state.mc.plot_travel_simulation(plot_mode)
                     st.image(travel_img)
                     
                 
