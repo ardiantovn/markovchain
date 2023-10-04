@@ -186,7 +186,9 @@ if __name__ == "__main__":
                                                                     matrix_df=st.session_state.mc.blocked_df,
                                                                     n_step=n_step)
                     
-                    st.image(plot_prob)
+                    st.image(plot_prob[0])
+                    
+                    st.write('PROB_VALUES: ', plot_prob[1])
                     
                 
                 

@@ -320,10 +320,11 @@ class MarkovChain:
         else:
             return np.dot(matrix, self.matrix_power(matrix, power-1))
 
-    def prob_ending_region_in_n_step(self, matrix_df: pd.DataFrame,
-                                        init_region: str,
-                                        final_region: str,
-                                        n_step: int) -> float:
+    def prob_ending_region_in_n_step(self, 
+                                     matrix_df: pd.DataFrame,
+                                     init_region: str,
+                                     final_region: str,
+                                     n_step: int) -> float:
         """
         Calculates the probability of ending in a specific region in n-step.
 
@@ -452,6 +453,7 @@ class MarkovChain:
         Returns:
             save_as (str): The path to the generated line chart.
         """
+        self.clear_all_generated_files(file_prefix='prob_ending_')
         prob_ending_list = []
         for i in range(0,n_step+1):
             prob_ending_val = self.prob_ending_region_in_n_step(matrix_df=matrix_df,
@@ -478,5 +480,6 @@ class MarkovChain:
         plt.show()
         save_as = f'./prob_ending_{final_region}.jpeg'
         plt.savefig(save_as)
-        return save_as
+        print(prob_ending_list)
+        return save_as, prob_ending_list
     

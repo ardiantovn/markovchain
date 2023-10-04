@@ -2,11 +2,11 @@ digraph {
 	rankdir=LR size="8,5"
 	node [shape=circle]
 	" Yaksu"
-	Seongsu [fillcolor="#40e0d0" style=filled]
+	Seongsu
 	" Yaksu" -> Seongsu [label=0.26]
 	" Isu"
 	" Isu" -> Seongsu [label=0.35]
-	" Onsu"
+	" Onsu" [fillcolor="#40e0d0" style=filled]
 	" Yaksu" -> " Onsu" [label=0.29]
 	" Isu" -> " Onsu" [label=0.37]
 	Seongsu -> " Yaksu" [label=0.78]
