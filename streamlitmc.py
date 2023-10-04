@@ -166,17 +166,19 @@ if __name__ == "__main__":
                     ## SIMULATION RESULTS
                     
                     The UAV finished the trip after **{len(travel_simulated)-1} STEP** through
-                    this **ROUTE: {travel_simulated}**.
+                    this 
+                    
+                    **ROUTE: {travel_simulated}**.
                     '''
                     travel_img = st.session_state.mc.plot_travel_simulation(plot_mode)
                     
                     st.image(travel_img)
                     
                     f'''
-                    ## Probability Ending in {end.upper()} After N-STEP
+                    ## Probability Ending in {end.upper()} After {n_step}-STEP
                     
                     This plot below shows the probability of ending in {end.upper()}
-                    {n_step}-step. 
+                    after {n_step}-step. 
                     '''
                     
                     plot_prob = st.session_state.mc.plot_prob_ending(init_region=start,

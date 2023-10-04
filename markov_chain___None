@@ -3,16 +3,16 @@ digraph {
 	node [shape=circle]
 	" Wangsimni"
 	Ttukseom
-	" Wangsimni" -> Ttukseom [label=0.15]
+	" Wangsimni" -> Ttukseom [label=0.34]
 	" Dapsimni"
-	" Dapsimni" -> Ttukseom [label=0.35]
+	" Dapsimni" -> Ttukseom [label=0.45]
 	" Gunja"
-	" Wangsimni" -> " Gunja" [label=0.47]
-	" Dapsimni" -> " Gunja" [label=0.49]
-	Ttukseom -> " Wangsimni" [label=0.51]
-	" Gunja" -> " Wangsimni" [label=0.38]
-	" Dapsimni" -> " Wangsimni" [label=0.16]
-	Ttukseom -> " Dapsimni" [label=0.49]
-	" Gunja" -> " Dapsimni" [label=0.62]
-	" Wangsimni" -> " Dapsimni" [label=0.38]
+	" Wangsimni" -> " Gunja" [label=0.2]
+	" Dapsimni" -> " Gunja" [label=0.09]
+	Ttukseom -> " Wangsimni" [label=0.73]
+	" Gunja" -> " Wangsimni" [label=0.69]
+	" Dapsimni" -> " Wangsimni" [label=0.46]
+	Ttukseom -> " Dapsimni" [label=0.27]
+	" Gunja" -> " Dapsimni" [label=0.31]
+	" Wangsimni" -> " Dapsimni" [label=0.46]
 }

@@ -472,7 +472,7 @@ class MarkovChain:
         plt.ylabel('Probability')
 
         # Set the title of the chart
-        plt.title(f'Probability Ending In {final_region.upper()} After N-Step')
+        plt.title(f'Probability Ending In {final_region.upper()} After {n_step}-Step')
 
         # Display the line chart
         plt.show()

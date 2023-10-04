@@ -1,10 +1,10 @@
 digraph {
 	rankdir=LR size="8,5"
 	node [shape=circle]
-	" Wangsimni" [fillcolor="#40e0d0" style=filled]
+	" Wangsimni"
 	Ttukseom
 	" Wangsimni" -> Ttukseom [label=0.34]
-	" Dapsimni"
+	" Dapsimni" [fillcolor="#40e0d0" style=filled]
 	" Dapsimni" -> Ttukseom [label=0.45]
 	" Gunja"
 	" Wangsimni" -> " Gunja" [label=0.2]
