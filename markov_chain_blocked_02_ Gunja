@@ -6,7 +6,7 @@ digraph {
 	" Wangsimni" -> Ttukseom [label=0.15]
 	" Dapsimni"
 	" Dapsimni" -> Ttukseom [label=0.35]
-	" Gunja"
+	" Gunja" [fillcolor="#40e0d0" style=filled]
 	" Wangsimni" -> " Gunja" [label=0.47]
 	" Dapsimni" -> " Gunja" [label=0.49]
 	Ttukseom -> " Wangsimni" [label=0.51]

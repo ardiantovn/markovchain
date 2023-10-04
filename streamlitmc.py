@@ -44,7 +44,7 @@ if __name__ == "__main__":
     The UAV movement is determined by the Markov Chain using random transition matrix.
     
     ## Add Region List
-    Example: Gunja, Wangsimni, Dapsimni
+    Example: Ttukseom, Gunja, Wangsimni, Dapsimni
     '''
     
     obj = StreamlitMC()
@@ -139,22 +139,52 @@ if __name__ == "__main__":
                 with block2:
                     st.image(st.session_state.mc.blocked_img)
                 
-                simulate = st.button('SIMULATE')
+                f'''
+                ## SIMULATION
+                
+                This section will simulate the possible routes for the UAV starting
+                from {start.upper()} and ending in {end.upper()}. The first result will
+                generate the route randomly based on the transition matrix.
+                
+                In the second result, it will show the probability of ending in {end.upper()}
+                after N-step. You can change the N value using the slider below.
+                '''
+                
+                n_step = st.slider('### How many step?', 0, 50, 20)
+                
+                simulate = st.button("SIMULATE")
                 
                 if simulate:
                     plot_mode='blocked'
+                
                     travel_simulated = st.session_state.mc.travel_simulation(start,
                                                                             end,
                                                                             plot_mode
                                                                             )
+                    
                     f'''
                     ## SIMULATION RESULTS
-                    - N-STEP : {len(travel_simulated)-1}
-                    - POSSIBLE ROUTE: {travel_simulated}
+                    
+                    The UAV finished the trip after **{len(travel_simulated)-1} STEP** through
+                    this **ROUTE: {travel_simulated}**.
+                    '''
+                    travel_img = st.session_state.mc.plot_travel_simulation(plot_mode)
+                    
+                    st.image(travel_img)
+                    
+                    f'''
+                    ## Probability Ending in {end.upper()} After N-STEP
+                    
+                    This plot below shows the probability of ending in {end.upper()}
+                    {n_step}-step. 
                     '''
                     
-                    travel_img = st.session_state.mc.plot_travel_simulation(plot_mode)
-                    st.image(travel_img)
+                    plot_prob = st.session_state.mc.plot_prob_ending(init_region=start,
+                                                                    final_region=end,
+                                                                    matrix_df=st.session_state.mc.blocked_df,
+                                                                    n_step=n_step)
+                    
+                    st.image(plot_prob)
                     
                 
                 

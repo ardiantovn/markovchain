@@ -1,20 +1,19 @@
 digraph {
 	rankdir=LR size="8,5"
 	node [shape=circle]
-	" b"
-	a
-	" b" -> a [label=0.49]
-	" c"
-	" c" -> a [label=0.52]
-	" d"
-	" d" -> a [label=0.49]
-	a -> " b" [label=0.1]
-	" c" -> " b" [label=0.28]
-	" d" -> " b" [label=0.01]
-	a -> " c" [label=0.88]
-	" b" -> " c" [label=0.5]
-	" d" -> " c" [label=0.5]
-	a -> " d" [label=0.02]
-	" b" -> " d" [label=0.01]
-	" c" -> " d" [label=0.2]
+	" Gunja"
+	Ttukseom
+	" Gunja" -> Ttukseom [label=0.12]
+	" Wangsimni"
+	" Wangsimni" -> Ttukseom [label=0.33]
+	" Dapsimni"
+	" Dapsimni" -> Ttukseom [label=0.25]
+	Ttukseom -> " Gunja" [label=0.66]
+	" Wangsimni" -> " Gunja" [label=0.51]
+	" Dapsimni" -> " Gunja" [label=0.58]
+	" Gunja" -> " Wangsimni" [label=0.12]
+	" Dapsimni" -> " Wangsimni" [label=0.17]
+	Ttukseom -> " Dapsimni" [label=0.34]
+	" Gunja" -> " Dapsimni" [label=0.76]
+	" Wangsimni" -> " Dapsimni" [label=0.16]
 }

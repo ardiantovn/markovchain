@@ -3,6 +3,7 @@ import random
 import pandas as pd
 import numpy as np
 import imageio.v2 as imageio
+import matplotlib.pyplot as plt
 
 from graphviz import Digraph
 from IPython.display import Image as ImageDisplay
@@ -295,7 +296,7 @@ class MarkovChain:
 
         while region != dest_region:
             region = np.random.choice(selected_df.iloc[selected_df.index.get_loc(region)].index,
-                                    p=selected_df.iloc[selected_df.index.get_loc(region)])
+                                      p=selected_df.iloc[selected_df.index.get_loc(region)])
             self.travel_simulated.append(region)
         return self.travel_simulated
 
@@ -433,3 +434,49 @@ class MarkovChain:
         travel_img = self.generate_gif(file_prefix=f'markov_chain_{plot_mode}_', 
                                        save_as= './markov_chain_blocked_travel_sim.gif')
         return travel_img
+    def plot_prob_ending(self,
+                         init_region: str,
+                         final_region: str,
+                         matrix_df: pd.DataFrame,
+                         n_step: int,
+                         ) -> str:
+        """
+        Generate a line chart showing the probability of ending 
+        in a specific region after a given number of steps.
+
+        Parameters:
+            init_region (str): The initial region.
+            final_region (str): The final region.
+            matrix_df (pd.DataFrame): The transition matrix.
+            n_step (int): The number of steps.
+
+        Returns:
+            save_as (str): The path to the generated line chart.
+        """
+        prob_ending_list = []
+        for i in range(0,n_step+1):
+            prob_ending_val = self.prob_ending_region_after_n_step(matrix_df=matrix_df,
+                                                                      init_region=init_region,
+                                                                      final_region=final_region,
+                                                                      n_step=i)
+            prob_ending_list.append(prob_ending_val)
+
+        # Create x-axis values
+        x_values = range(len(prob_ending_list))
+
+        # Plot the line chart
+        plt.plot(x_values, prob_ending_list, marker='o')
+
+        # Set the x-axis and y-axis labels
+        plt.xlabel('N-Step')
+        plt.ylabel('Probability')
+
+        # Set the title of the chart
+        plt.title(f'Probability Ending In {final_region.upper()} After N-Step')
+
+        # Display the line chart
+        plt.show()
+        save_as = f'./prob_ending_{final_region}.jpeg'
+        plt.savefig(save_as)
+        return save_as
+    
