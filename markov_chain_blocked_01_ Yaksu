@@ -4,7 +4,7 @@ digraph {
 	" Onsu"
 	Seongsu
 	" Onsu" -> Seongsu [label=0.61]
-	" Yaksu"
+	" Yaksu" [fillcolor="#40e0d0" style=filled]
 	" Yaksu" -> Seongsu [label=0.31]
 	Seongsu -> " Onsu" [label=0.62]
 	" Yaksu" -> " Onsu" [label=0.25]

@@ -8,7 +8,7 @@ digraph {
 	" Yaksu" -> Seongsu [label=0.31]
 	Seongsu -> " Onsu" [label=0.62]
 	" Yaksu" -> " Onsu" [label=0.25]
-	" Isu"
+	" Isu" [fillcolor="#40e0d0" style=filled]
 	" Isu" -> " Onsu" [label=0.39]
 	Seongsu -> " Yaksu" [label=0.38]
 	" Onsu" -> " Yaksu" [label=0.28]
