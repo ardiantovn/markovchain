@@ -3,18 +3,18 @@ digraph {
 	node [shape=circle]
 	" Onsu"
 	Seongsu
-	" Onsu" -> Seongsu [label=0.22]
+	" Onsu" -> Seongsu [label=0.32]
 	" Yaksu"
-	" Yaksu" -> Seongsu [label=0.34]
+	" Yaksu" -> Seongsu [label=0.03]
 	" Isu"
-	" Isu" -> Seongsu [label=0.42]
-	Seongsu -> " Onsu" [label=0.3]
-	" Yaksu" -> " Onsu" [label=0.53]
-	" Isu" -> " Onsu" [label=0.13]
-	Seongsu -> " Yaksu" [label=0.52]
-	" Onsu" -> " Yaksu" [label=0.39]
-	" Isu" -> " Yaksu" [label=0.45]
-	Seongsu -> " Isu" [label=0.18]
-	" Onsu" -> " Isu" [label=0.39]
-	" Yaksu" -> " Isu" [label=0.13]
+	" Isu" -> Seongsu [label=0.52]
+	Seongsu -> " Onsu" [label=0.33]
+	" Yaksu" -> " Onsu" [label=0.4]
+	" Isu" -> " Onsu" [label=0.25]
+	Seongsu -> " Yaksu" [label=0.16]
+	" Onsu" -> " Yaksu" [label=0.01]
+	" Isu" -> " Yaksu" [label=0.23]
+	Seongsu -> " Isu" [label=0.51]
+	" Onsu" -> " Isu" [label=0.67]
+	" Yaksu" -> " Isu" [label=0.57]
 }

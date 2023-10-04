@@ -1,18 +1,18 @@
 digraph {
 	rankdir=LR size="8,5"
 	node [shape=circle]
-	" Onsu"
-	Seongsu
-	" Onsu" -> Seongsu [label=0.61]
 	" Yaksu"
-	" Yaksu" -> Seongsu [label=0.31]
-	Seongsu -> " Onsu" [label=0.62]
-	" Yaksu" -> " Onsu" [label=0.25]
+	Seongsu
+	" Yaksu" -> Seongsu [label=0.25]
 	" Isu"
-	" Isu" -> " Onsu" [label=0.39]
-	Seongsu -> " Yaksu" [label=0.38]
-	" Onsu" -> " Yaksu" [label=0.28]
-	" Isu" -> " Yaksu" [label=0.61]
-	" Onsu" -> " Isu" [label=0.11]
-	" Yaksu" -> " Isu" [label=0.44]
+	" Isu" -> Seongsu [label=0.35]
+	" Onsu"
+	" Yaksu" -> " Onsu" [label=0.24]
+	" Isu" -> " Onsu" [label=0.45]
+	Seongsu -> " Yaksu" [label=0.1]
+	" Onsu" -> " Yaksu" [label=0.13]
+	" Isu" -> " Yaksu" [label=0.2]
+	Seongsu -> " Isu" [label=0.9]
+	" Onsu" -> " Isu" [label=0.87]
+	" Yaksu" -> " Isu" [label=0.51]
 }

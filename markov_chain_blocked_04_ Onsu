@@ -4,9 +4,9 @@ digraph {
 	" Yaksu"
 	Seongsu
 	" Yaksu" -> Seongsu [label=0.25]
-	" Isu" [fillcolor="#40e0d0" style=filled]
+	" Isu"
 	" Isu" -> Seongsu [label=0.35]
-	" Onsu"
+	" Onsu" [fillcolor="#40e0d0" style=filled]
 	" Yaksu" -> " Onsu" [label=0.24]
 	" Isu" -> " Onsu" [label=0.45]
 	Seongsu -> " Yaksu" [label=0.1]

@@ -22,12 +22,11 @@ class MarkovChain:
     Methods:
         baseline_data(): Generates a baseline dataframe based on the region list.
         clear_all_generated_files(): Clears all generated files in the current directory.
-        prob_ending_region_after_n_step(matrix, 
+        prob_ending_region_in_n_step(matrix, 
                                         initial_region,
                                         final_region,
                                         n_steps): Calculates the probability of ending in a 
-                                                  specific region after taking a certain 
-                                                  number of steps in a matrix.
+                                                  specific region in n-step.
         plot_base(): Generates the base plot for visualization.
         block_nodes(matrix,
                     node_1=None,
@@ -321,12 +320,12 @@ class MarkovChain:
         else:
             return np.dot(matrix, self.matrix_power(matrix, power-1))
 
-    def prob_ending_region_after_n_step(self, matrix_df: pd.DataFrame,
+    def prob_ending_region_in_n_step(self, matrix_df: pd.DataFrame,
                                         init_region: str,
                                         final_region: str,
                                         n_step: int) -> float:
         """
-        Calculates the probability of ending in a specific region after taking a certain number of steps in a matrix.
+        Calculates the probability of ending in a specific region in n-step.
 
         Args:
             matrix_df (pd.DataFrame): The input matrix containing transition probabilities between regions.
@@ -335,15 +334,15 @@ class MarkovChain:
             n_step (int): The number of steps to take.
 
         Returns:
-            float: The probability of ending in the final region after n steps.
+            float: The probability of ending in the final region in n steps.
         """
         region_list = list(matrix_df.columns)
         initial_dist = np.asarray([i==init_region for i in region_list])
         df_trip_2 = self.matrix_power(matrix_df.to_numpy(),n_step)
         res = np.dot(initial_dist,df_trip_2)
         final_region_idx = region_list.index(final_region)
-        prob_ending_in_final_region_after_n_step = res[final_region_idx]
-        return prob_ending_in_final_region_after_n_step 
+        prob_ending_in_final_region_in_n_step = res[final_region_idx]
+        return prob_ending_in_final_region_in_n_step 
     
     def plot_base(self):
         """
@@ -442,7 +441,7 @@ class MarkovChain:
                          ) -> str:
         """
         Generate a line chart showing the probability of ending 
-        in a specific region after a given number of steps.
+        in a specific region  given number of steps.
 
         Parameters:
             init_region (str): The initial region.
@@ -455,10 +454,11 @@ class MarkovChain:
         """
         prob_ending_list = []
         for i in range(0,n_step+1):
-            prob_ending_val = self.prob_ending_region_after_n_step(matrix_df=matrix_df,
+            prob_ending_val = self.prob_ending_region_in_n_step(matrix_df=matrix_df,
                                                                       init_region=init_region,
                                                                       final_region=final_region,
                                                                       n_step=i)
+                
             prob_ending_list.append(prob_ending_val)
 
         # Create x-axis values
@@ -472,7 +472,7 @@ class MarkovChain:
         plt.ylabel('Probability')
 
         # Set the title of the chart
-        plt.title(f'Probability Ending In {final_region.upper()} After {n_step}-Step')
+        plt.title(f'Probability Ending In {final_region.upper()} in {n_step}-Step')
 
         # Display the line chart
         plt.show()

@@ -147,7 +147,7 @@ if __name__ == "__main__":
                 generate the route randomly based on the transition matrix.
                 
                 In the second result, it will show the probability of ending in {end.upper()}
-                after N-step. You can change the N value using the slider below.
+                in N-step. You can change the N value using the slider below.
                 '''
                 
                 n_step = st.slider('### How many step?', 0, 50, 20)
@@ -165,7 +165,7 @@ if __name__ == "__main__":
                     f'''
                     ## SIMULATION RESULTS
                     
-                    The UAV finished the trip after **{len(travel_simulated)-1} STEP** through
+                    The UAV finished the trip in **{len(travel_simulated)-1} STEP** through
                     this 
                     
                     **ROUTE: {travel_simulated}**.
@@ -175,10 +175,10 @@ if __name__ == "__main__":
                     st.image(travel_img)
                     
                     f'''
-                    ## Probability Ending in {end.upper()} After {n_step}-STEP
+                    ## Probability Ending in {end.upper()} in {n_step}-STEP
                     
                     This plot below shows the probability of ending in {end.upper()}
-                    after {n_step}-step. 
+                    in {n_step}-step. 
                     '''
                     
                     plot_prob = st.session_state.mc.plot_prob_ending(init_region=start,
