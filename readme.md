@@ -1,4 +1,4 @@
-# UAV Route Simulator using Markov Chain
+# UAV Route Simulator using Markov Chains
 
 This repo contains:
 - `markovchain.ipynb`: 
