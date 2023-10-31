@@ -372,9 +372,6 @@ class MarkovChain:
         # clear previous  all generated files
         self.clear_all_generated_files(file_prefix='markov_chain_base')
 
-        # declare matrix
-        self.base_df = self.baseline_data(self.region_list,
-                                          self.remove_self_flight)
         self.prep_base_df = self.preprocess_data(self.base_df)
         
         # render graph network
