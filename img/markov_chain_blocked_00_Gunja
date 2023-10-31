@@ -2,7 +2,7 @@ digraph {
 	rankdir=LR size="8,5"
 	node [shape=circle]
 	" Ttukseom"
-	Gunja
+	Gunja [fillcolor="#40e0d0" style=filled]
 	" Ttukseom" -> Gunja [label=0.08]
 	" Isu"
 	" Isu" -> Gunja [label=0.24]
