@@ -212,15 +212,15 @@ class MarkovChain:
         if index != '':
             if int(index) < 10:
                 index = f'0{index}'
-        fname = f'./markov_chain_{prefix}_{index}_{colored}'
+        fname = f'./img/markov_chain_{prefix}_{index}_{colored}'
         G.render(fname, view=False)
         save_as = f'{fname}.jpeg'
         return save_as
 
     def generate_gif(self,
-                     jpeg_dir: str = './',
+                     jpeg_dir: str = './img/',
                      file_prefix: str = 'markov_chain',
-                     save_as: str = './markov_chain.gif',
+                     save_as: str = './img/markov_chain.gif',
                      duration: int = 1000) -> str:
         """
         Generates a GIF from a directory of jpeg images.
@@ -262,7 +262,7 @@ class MarkovChain:
         """
         Clears all generated files in the current directory.
         """
-        mydir: str = './'
+        mydir: str = './img/'
         filelist: List[str] = [f for f in os.listdir(mydir) if f.startswith(file_prefix)]
         for f in filelist:
             os.remove(os.path.join(mydir, f))
@@ -364,9 +364,6 @@ class MarkovChain:
         self.base_df = self.baseline_data(self.region_list,
                                           self.remove_self_flight)
         self.prep_base_df = self.preprocess_data(self.base_df)
-
-        print('BASELINE MATRIX ')
-        print(self.base_df)
         
         # render graph network
         self.base_img = self.create_graph_network(self.prep_base_df,
@@ -388,9 +385,9 @@ class MarkovChain:
             blocked_img: The graph network image after blocking the nodes.
         """
         # block nodes
-        self.blocked_df = self.block_nodes(self.base_df, 
-                                            node_1, 
-                                            node_2, 
+        self.blocked_df = self.block_nodes(self.base_df,
+                                            node_1,
+                                            node_2,
                                             self.remove_self_flight)
         print(f'\n BLOCKED MATRIX BETWEEN {node_1} AND {node_2}')
         print(self.blocked_df)
@@ -432,7 +429,7 @@ class MarkovChain:
         
         # generate gif
         travel_img = self.generate_gif(file_prefix=f'markov_chain_{plot_mode}_', 
-                                       save_as= './markov_chain_blocked_travel_sim.gif')
+                                       save_as= './img/markov_chain_blocked_travel_sim.gif')
         return travel_img
     def plot_prob_ending(self,
                          init_region: str,
@@ -478,7 +475,7 @@ class MarkovChain:
 
         # Display the line chart
         plt.show()
-        save_as = f'./prob_ending_{final_region}.jpeg'
+        save_as = f'./img/prob_ending_{final_region}.jpeg'
         plt.savefig(save_as)
         print(prob_ending_list)
         return save_as, prob_ending_list
