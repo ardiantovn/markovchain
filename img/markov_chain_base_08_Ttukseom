@@ -1,0 +1,18 @@
+digraph {
+	rankdir=LR size="8,5"
+	node [shape=circle]
+	Ttukseom [fillcolor="#40e0d0" style=filled]
+	Gunja
+	Ttukseom -> Gunja [label=0.28]
+	Isu
+	Isu -> Gunja [label=0.16]
+	Gapyeong
+	Ttukseom -> Gapyeong [label=0.52]
+	Isu -> Gapyeong [label=0.41]
+	Gunja -> Ttukseom [label=0.07]
+	Gapyeong -> Ttukseom [label=0.86]
+	Isu -> Ttukseom [label=0.43]
+	Gunja -> Isu [label=0.93]
+	Gapyeong -> Isu [label=0.14]
+	Ttukseom -> Isu [label=0.2]
+}
