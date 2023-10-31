@@ -57,7 +57,7 @@ if __name__ == "__main__":
         region_updated = True
     
     if len(obj.region_list)>1:
-        st.sidebar.title("Plot Basic Transision Matrix")
+        st.sidebar.title("Plot Basic Transition Matrix")
         plot_base = False
         plot_base = st.sidebar.toggle("Plot Basic", plot_base)
         
@@ -86,7 +86,7 @@ if __name__ == "__main__":
             # base_img = mc.plot_base()
             
             '''
-            ## Basic Transision Matrix and its Graph Network
+            ## Basic Transition Matrix and its Graph Network
             '''
             base1, base2 = st.columns(2)
             with base1:
@@ -119,7 +119,7 @@ if __name__ == "__main__":
             
             if plot_blocked:
                 '''
-                ## UAV Flight Transision Matrix and its Graph Network
+                ## UAV Flight Transition Matrix and its Graph Network
                 '''
                 if 'blocked' not in st.session_state \
                     or remove_updated \

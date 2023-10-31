@@ -5,7 +5,7 @@ This repo contains:
 
    A Jupyter notebook that demonstrates the use of Markov Chains to simulate the movement of a UAV.
    The user can upload their own data and run the simulation.
-   This repository contains an example file (`./data/example.csv`) that can be used as a probability matrix.
+   This repository contains an example file (`./data/example.csv`) that can be used as a transition matrix.
 
    Using the example data, the user will simulate a use case as follows:
 
@@ -23,15 +23,15 @@ This repo contains:
 
 ## How to use the web app simulator
 
-1. Enter several regions as a comma separated list. (e.g. `Gunja,Gapyeong,Ttukseom,Isu`). This step will generate a random probability matrix. 
-Turn on `Plot Basic` to see the generated probability matrix and its graph network. 
+1. Enter several regions as a comma separated list. (e.g. `Gunja,Gapyeong,Ttukseom,Isu`). This step will generate a random transition matrix. 
+Turn on `Plot Basic` to see the generated transition matrix and its graph network. 
 ![ss01](./asset/ss01.png)
 
 2. [Optional] Turn on `Remove Self Flight` to prevent the UAV from staying in a region.
 ![ss02](./asset/ss02.png)
 
 3. Select Departure and Arrival Region and turn on `Plot Route`. This step will
-generate a new random probability matrix and 
+generate a new random transition matrix and 
 automatically remove the direct connection between departure and arrival region.
 ![ss03](./asset/ss03.png)
 

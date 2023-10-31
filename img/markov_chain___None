@@ -3,16 +3,16 @@ digraph {
 	node [shape=circle]
 	Ttukseom
 	Gunja
-	Ttukseom -> Gunja [label=0.23]
+	Ttukseom -> Gunja [label=0.24]
 	Isu
-	Isu -> Gunja [label=0.32]
+	Isu -> Gunja [label=0.56]
 	Gapyeong
-	Ttukseom -> Gapyeong [label=0.22]
-	Isu -> Gapyeong [label=0.41]
-	Gunja -> Ttukseom [label=0.41]
-	Gapyeong -> Ttukseom [label=0.25]
+	Ttukseom -> Gapyeong [label=0.59]
+	Isu -> Gapyeong [label=0.17]
+	Gunja -> Ttukseom [label=0.5]
+	Gapyeong -> Ttukseom [label=0.53]
 	Isu -> Ttukseom [label=0.27]
-	Gunja -> Isu [label=0.59]
-	Gapyeong -> Isu [label=0.75]
-	Ttukseom -> Isu [label=0.55]
+	Gunja -> Isu [label=0.5]
+	Gapyeong -> Isu [label=0.47]
+	Ttukseom -> Isu [label=0.17]
 }
