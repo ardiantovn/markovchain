@@ -6,7 +6,7 @@ digraph {
 	" Ttukseom" -> Gunja [label=0.14]
 	" Isu"
 	" Isu" -> Gunja [label=0.28]
-	" Gapyeong"
+	" Gapyeong" [fillcolor="#40e0d0" style=filled]
 	" Ttukseom" -> " Gapyeong" [label=0.45]
 	" Isu" -> " Gapyeong" [label=0.02]
 	Gunja -> " Ttukseom" [label=0.47]

@@ -57,11 +57,11 @@ class MarkovChain:
         self.csv_file_path = csv_file_path
         if self.generate_random_data is False:
             self.base_df = pd.read_csv(self.csv_file_path, index_col=0)
-            print("INITIAL PROBSBILITY MATRIX USING : CSV DATA")
+            print("INITIAL PROBABILITY MATRIX USING : CSV DATA")
         else:
             self.base_df = self.baseline_data(self.region_list,
                                               self.remove_self_flight)
-            print("INITIAL PROBSBILITY MATRIX USING : RANDOM DATA")
+            print("INITIAL PROBABILITY MATRIX USING : RANDOM DATA")
         print(self.base_df)
         return None
         
