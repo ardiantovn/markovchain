@@ -6,7 +6,7 @@ digraph {
 	Yaksu -> Seongsu [label=0.46]
 	Isu
 	Isu -> Seongsu [label=0.21]
-	Onsu
+	Onsu [fillcolor="#40e0d0" style=filled]
 	Yaksu -> Onsu [label=0.44]
 	Isu -> Onsu [label=0.37]
 	Seongsu -> Yaksu [label=0.79]
