@@ -38,7 +38,9 @@ class MarkovChain:
     """
     def __init__(self,
                  region_list: List[str],
-                 remove_self_flight: bool=False) -> None:
+                 remove_self_flight: bool=False,
+                 generate_random_data: bool=False,
+                 csv_file_path: str=None) -> None:
         """
         Initializes a new instance of the class.
 
@@ -51,6 +53,16 @@ class MarkovChain:
         """
         self.remove_self_flight = remove_self_flight
         self.region_list = region_list
+        self.generate_random_data = generate_random_data
+        self.csv_file_path = csv_file_path
+        if self.generate_random_data is False:
+            self.base_df = pd.read_csv(self.csv_file_path, index_col=0)
+            print("USING : CSV DATA")
+        else:
+            self.base_df = self.baseline_data(self.region_list,
+                                              self.remove_self_flight)
+            print("USING : RANDOM DATA")
+        print(self.base_df)
         return None
         
     def generate_list(self,
@@ -109,9 +121,9 @@ class MarkovChain:
 
 
     def block_nodes(self,
-                    df: pd.DataFrame, 
-                    node_1: Any = None, 
-                    node_2: Any = None, 
+                    df: pd.DataFrame,
+                    node_1: Any = None,
+                    node_2: Any = None,
                     remove_self_flight: bool = False) -> pd.DataFrame:
         """
         Generates an adjacency matrix based on the given DataFrame, node_1, and node_2.
@@ -344,32 +356,6 @@ class MarkovChain:
         final_region_idx = region_list.index(final_region)
         prob_ending_in_final_region_in_n_step = res[final_region_idx]
         return prob_ending_in_final_region_in_n_step 
-    
-    def plot_base(self):
-        """
-        Generate the base plot for visualization.
-
-        Clears all previously generated files.
-
-        Parameters:
-            None
-
-        Returns:
-            The generated base plot image.
-        """
-        # clear previous  all generated files
-        self.clear_all_generated_files(file_prefix='markov_chain_base')
-
-        # declare matrix
-        self.base_df = self.baseline_data(self.region_list,
-                                          self.remove_self_flight)
-        self.prep_base_df = self.preprocess_data(self.base_df)
-        
-        # render graph network
-        self.base_img = self.create_graph_network(self.prep_base_df,
-                                                  colored=None,
-                                                  prefix='base')
-        return self.base_img
 
     def plot_blocked_node(self,
                           node_1: str,
@@ -384,6 +370,9 @@ class MarkovChain:
         Returns:
             blocked_img: The graph network image after blocking the nodes.
         """
+        # clear previous  all generated files
+        self.clear_all_generated_files(file_prefix='markov_chain_base')
+        
         # block nodes
         self.blocked_df = self.block_nodes(self.base_df,
                                             node_1,
