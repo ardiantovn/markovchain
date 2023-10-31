@@ -372,6 +372,7 @@ class MarkovChain:
         """
         # clear previous  all generated files
         self.clear_all_generated_files(file_prefix='markov_chain_base')
+        self.clear_all_generated_files(file_prefix='markov_chain_blocked')
         
         # block nodes
         self.blocked_df = self.block_nodes(self.base_df,
@@ -402,6 +403,7 @@ class MarkovChain:
             str: The path to the generated travel image.
         """
         # clear previous  all generated files
+        self.clear_all_generated_files(file_prefix='markov_chain_base')
         self.clear_all_generated_files(file_prefix='markov_chain_blocked')
 
         # render graph network
