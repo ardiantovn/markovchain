@@ -489,9 +489,9 @@ class MarkovChain:
         plt.title(f'Probability Ending In {final_region.upper()} in {n_step}-Step')
 
         # Display the line chart
-        plt.show()
         save_as = f'./img/prob_ending_{final_region}.jpeg'
         plt.savefig(save_as)
         print(prob_ending_list)
+        plt.show()
         return save_as, prob_ending_list
     
