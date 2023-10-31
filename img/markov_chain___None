@@ -1,18 +1,18 @@
 digraph {
 	rankdir=LR size="8,5"
 	node [shape=circle]
-	" Ttukseom"
+	Ttukseom
 	Gunja
-	" Ttukseom" -> Gunja [label=0.14]
-	" Isu"
-	" Isu" -> Gunja [label=0.28]
-	" Gapyeong"
-	" Ttukseom" -> " Gapyeong" [label=0.45]
-	" Isu" -> " Gapyeong" [label=0.02]
-	Gunja -> " Ttukseom" [label=0.47]
-	" Gapyeong" -> " Ttukseom" [label=0.99]
-	" Isu" -> " Ttukseom" [label=0.7]
-	Gunja -> " Isu" [label=0.53]
-	" Gapyeong" -> " Isu" [label=0.01]
-	" Ttukseom" -> " Isu" [label=0.41]
+	Ttukseom -> Gunja [label=0.3]
+	Isu
+	Isu -> Gunja [label=0.38]
+	Gapyeong
+	Ttukseom -> Gapyeong [label=0.46]
+	Isu -> Gapyeong [label=0.56]
+	Gunja -> Ttukseom [label=0.46]
+	Gapyeong -> Ttukseom [label=0.47]
+	Isu -> Ttukseom [label=0.06]
+	Gunja -> Isu [label=0.54]
+	Gapyeong -> Isu [label=0.53]
+	Ttukseom -> Isu [label=0.24]
 }
