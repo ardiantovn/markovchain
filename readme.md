@@ -1,6 +1,8 @@
 # UAV Route Simulator using Markov Chains
 
-![Alt Text](./img/markov_chain_blocked_travel_sim.gif)
+<p align="center">
+  <img src="./img/markov_chain_blocked_travel_sim.gif" alt="animated" />
+</p>
 
 This repo contains:
 - `markovchain.ipynb`: 
