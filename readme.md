@@ -41,3 +41,7 @@ automatically remove the direct connection between departure and arrival region.
 5. Scroll down to see the plot of probability ending
 in arrival region in N-step.
 ![ss05](./asset/ss05.png)
+
+# Acknowledgement
+
+Thanks to [this repo](https://github.com/ad17171717/YouTube-Tutorials/blob/main/Statistics%20with%20Python/An_Intro_to_Markov_chains_with_Python!.ipynb) for the inspiration.
